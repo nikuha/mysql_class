@@ -22,21 +22,21 @@ SELECT * FROM posts;
 /* 
  * Таблица связей медиа и постов
  */
-CREATE TABLE posts_medias (
+CREATE TABLE posts_media (
   post_id BIGINT UNSIGNED NOT NULL,
-  user_id BIGINT UNSIGNED NOT NULL,
+  media_id BIGINT UNSIGNED NOT NULL,
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
-  PRIMARY KEY (post_id, user_id),
-  INDEX posts_medias_post_idx (post_id),
-  INDEX posts_medias_user_idx (user_id),
-  CONSTRAINT fk_posts_medias_posts FOREIGN KEY (post_id) REFERENCES posts (id),
-  CONSTRAINT fk_posts_medias_users FOREIGN KEY (user_id) REFERENCES users (id)
+  PRIMARY KEY (post_id, media_id),
+  INDEX posts_media_post_idx (post_id),
+  INDEX posts_media_user_idx (media_id),
+  CONSTRAINT fk_posts_media_posts FOREIGN KEY (post_id) REFERENCES posts (id),
+  CONSTRAINT fk_posts_media_users FOREIGN KEY (media_id) REFERENCES media (id)
 ) ENGINE=InnoDB;
 
 
-INSERT INTO posts_medias VALUES (1, 1, DEFAULT);
+INSERT INTO posts_media VALUES (1, 1, DEFAULT);
 
-SELECT * FROM posts_medias;
+SELECT * FROM posts_media;
 
 /*
  * Таблица чатов
